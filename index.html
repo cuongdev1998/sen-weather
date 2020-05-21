@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="forecast">
+      <div class="location">
+        <p class="current-time"></p>
+        <div class="timezone"></div>
+        <canvas class="icon" width="128" height="128"></canvas>
+      </div>
+      <div class="temperature">
+        <div class="temperature-section">
+          <p class="degree"></p>
+          <i class="fas fa-dot-circle"></i>
+          <span class="unit">C</span>
+        </div>
+        <div class="description"></div>
+      </div>
+      <div class="level">
+        <div class="level-note">
+          <div class="">
+            <p></p>
+            Hot
+          </div>
+          <div class="">
+            <p></p>
+            Good
+          </div>
+          <div class="">
+            <p></p>
+            Cool
+          </div>
+        </div>
+        <button class="show-level">
+          <i class="fas fa-question-circle"></i>
+        </button>
+      </div>
+    </div>
+    <div class="week"></div>
+    <script src="skycons.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,370 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  position: relative;
+  transition: all 0.5s ease;
+  font-family: "Poppins", sans-serif;
+}
+.forecast {
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50vh;
+}
+.current-time {
+  font-size: 2rem;
+  color: #fff;
+}
+.location,
+.temperature {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 30vh;
+}
+.location .timezone {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.temperature {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: #fff;
+}
+.temperature-section {
+  display: flex;
+}
+.temperature .degree {
+  font-size: 50px;
+  font-weight: bold;
+}
+.unit {
+  font-size: 2rem;
+}
+.temperature .description {
+  font-size: 30px;
+}
+.level {
+  position: absolute;
+  right: 5%;
+  top: 20vh;
+
+  display: flex;
+  align-items: center;
+}
+.level-note {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 1rem;
+  line-height: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+}
+.level-note::after {
+  position: absolute;
+  content: "";
+  background-color: #fff;
+  right: -10%;
+  top: 40%;
+  transform: translate(10%, -40%);
+  width: 25px;
+  height: 25px;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+.level-note div {
+  display: flex;
+  color: rgb(110, 108, 108);
+  margin-bottom: 1rem;
+}
+.level-note div p {
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  margin-right: 1rem;
+}
+.level-note div:first-child p {
+  background-image: linear-gradient(rgb(233, 142, 39), rgb(240, 84, 22));
+}
+.level-note div:nth-child(2) p {
+  background-image: linear-gradient(rgb(49, 245, 108), rgb(49, 245, 163));
+}
+.level-note div:last-child p {
+  background-image: linear-gradient(rgb(22, 157, 247), rgb(22, 107, 247));
+}
+.show-level {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  /* border: solid 2px #fff; */
+  border: none;
+  background-color: transparent;
+
+  margin-left: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+.show-level:focus {
+  outline: none;
+}
+.show-level > i::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  font-size: 3rem;
+  transform: translate(-50%, -50%);
+}
+.level-appear {
+  opacity: 1;
+  visibility: visible;
+}
+.week {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  color: #fff;
+  height: 30vh;
+  margin-top: 50px;
+  justify-content: space-around;
+}
+.week .daily {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  width: 13%;
+  align-items: center;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  transition: all 0.5s ease;
+  /* box-shadow: 1.5px 1.5px 3px 0px #fff; */
+}
+.week .daily:hover {
+  box-shadow: 3px 3px 5px 0px #fff;
+  /* transform: skewX(-2deg); */
+}
+.week .daily canvas {
+  margin-top: 1rem;
+}
+.week .daily .summary-daily {
+  text-align: center;
+  /* margin-top: auto; */
+}
+.week .temperature-daily {
+  display: flex;
+  margin: 20px auto;
+}
+.week .temperature-daily p {
+  font-size: 1.7rem;
+}
+.week .temperature-daily span {
+  font-size: 1.4rem;
+}
+i {
+  font-size: 10px;
+  font-weight: 100;
+}
+.fa,
+.fas {
+  font-weight: 500;
+  padding-top: 10px;
+}
+
+@media screen and (max-width: 1100px) {
+  .forecast {
+    width: 60%;
+  }
+  .week {
+    width: 100%;
+  }
+  .week .daily {
+    min-height: 300px;
+  }
+}
+@media screen and (max-width: 867px) {
+  .forecast {
+    width: 60%;
+  }
+
+  .current-time {
+    font-size: 1.6rem;
+  }
+
+  .location .timezone {
+    font-size: 2rem;
+  }
+
+  .unit {
+    font-size: 2rem;
+  }
+  .temperature .description {
+    font-size: 25px;
+  }
+  .week .daily {
+    font-size: 0.9rem;
+    min-height: 270px;
+  }
+}
+@media screen and (max-width: 680px) {
+  .forecast {
+    width: 70%;
+  }
+  .current-time {
+    font-size: 1.3rem;
+  }
+
+  .location .timezone {
+    font-size: 1.8rem;
+  }
+  .location canvas {
+    width: 100px;
+    height: 100px;
+  }
+  .unit {
+    font-size: 2rem;
+  }
+  .temperature .degree {
+    font-size: 3rem;
+  }
+  .temperature .description {
+    font-size: 25px;
+  }
+  .week .daily {
+    font-size: 0.7rem;
+    min-height: 200px;
+    border: none;
+  }
+  .week .daily:hover {
+    box-shadow: none;
+    /* transform: skewX(-2deg); */
+  }
+  .week .daily h3 {
+    font-size: 0.9rem;
+  }
+  .week .daily .summary-daily {
+    display: none;
+  }
+  .week .temperature-daily p {
+    font-size: 1.2rem;
+  }
+  .week .temperature-daily span {
+    font-size: 1.2rem;
+  }
+  .level {
+    right: 2%;
+  }
+  .level-note div {
+    margin-bottom: 0.5rem;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+  }
+  .level-note::after {
+    width: 20px;
+    height: 20px;
+    right: -5%;
+    top: 45%;
+    transform: translate(5%, -45%);
+    transform: rotate(45deg);
+  }
+
+  .level-note div p {
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+  }
+  .level-note div:first-child p {
+    background-image: linear-gradient(rgb(233, 142, 39), rgb(240, 84, 22));
+  }
+  .level-note div:nth-child(2) p {
+    background-image: linear-gradient(rgb(49, 245, 108), rgb(49, 245, 163));
+  }
+  .level-note div:last-child p {
+    background-image: linear-gradient(rgb(22, 157, 247), rgb(22, 107, 247));
+  }
+  .show-level {
+    height: 30px;
+    width: 30px;
+  }
+  .show-level > i::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    font-size: 2rem;
+    transform: translate(-50%, -50%);
+  }
+}
+@media screen and (max-width: 550px) {
+  .forecast {
+    width: 90%;
+  }
+  .current-time {
+    font-size: 1rem;
+  }
+
+  .location .timezone {
+    font-size: 1.4rem;
+  }
+  .location canvas {
+    width: 60px;
+    height: 60px;
+  }
+  .unit {
+    font-size: 2rem;
+  }
+  .temperature .degree {
+    font-size: 3rem;
+  }
+  .temperature .description {
+    font-size: 1.3rem;
+  }
+  .week .daily {
+    font-size: 0.5rem;
+    min-height: 200px;
+    border: none;
+  }
+  .week .daily:hover {
+    box-shadow: none;
+    /* transform: skewX(-2deg); */
+  }
+  .week .daily h3 {
+    font-size: 0.5rem;
+  }
+  .week .daily .summary-daily {
+    display: none;
+  }
+  .week .temperature-daily p {
+    font-size: 1rem;
+  }
+  .week .temperature-daily span {
+    font-size: 1rem;
+  }
+
+  .level-note div {
+    font-size: 0.7rem;
+  }
+
+  .level-note div p {
+    width: 17px;
+    height: 17px;
+  }
+
+  .show-level > i::before {
+    font-size: 1.5rem;
+  }
+}
